@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Star Dodge</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+    <canvas id="game" width="400" height="640" aria-label="Star Dodge 게임"></canvas>
+
+    <div id="hud" class="hidden">
+      <div>점수 <span id="score">0</span></div>
+      <div>최고 <span id="best">0</span></div>
+    </div>
+
+    <div id="overlay" class="panel">
+      <h1>⭐ Star Dodge</h1>
+      <p class="sub">운석을 피하고 별을 모으세요</p>
+      <p class="hint">← → / A D · 터치로 좌우</p>
+      <button id="startBtn" type="button">시작</button>
+      <p class="best-line">최고점 <span id="bestTitle">0</span></p>
+    </div>
+
+    <div id="touch" class="hidden">
+      <button type="button" id="leftBtn" aria-label="왼쪽">◀</button>
+      <button type="button" id="rightBtn" aria-label="오른쪽">▶</button>
+    </div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
