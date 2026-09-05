@@ -24,6 +24,7 @@
     mode: "title",
     elapsed: 0,
     score: 0,
+    scoreAcc: 0,
     ship: { x: W / 2, y: H - 70, r: 14, vx: 0 },
     rocks: [],
     stars: [],
@@ -35,7 +36,8 @@
   };
 
   function setScore(n) {
-    state.score = Math.max(0, Math.floor(n));
+    state.scoreAcc = Math.max(0, n);
+    state.score = Math.floor(state.scoreAcc);
     scoreEl.textContent = String(state.score);
   }
 
@@ -258,7 +260,7 @@
   function update(dt) {
     if (state.mode === "play") {
       state.elapsed += dt;
-      setScore(state.score + dt * 0.04);
+      setScore(state.scoreAcc + dt * 0.04);
 
       const ship = state.ship;
       if (state.keys.left) ship.vx -= 0.55;
@@ -299,7 +301,7 @@
         const star = state.stars[i];
         if (hit(ship, star)) {
           state.stars.splice(i, 1);
-          setScore(state.score + 50);
+          setScore(state.scoreAcc + 50);
           burst(star.x, star.y, "#ffe66d", 14);
         } else if (star.y >= H + 20) {
           state.stars.splice(i, 1);
